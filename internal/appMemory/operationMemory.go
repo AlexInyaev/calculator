@@ -21,8 +21,10 @@ func SaveOptration(opiration *cli.CalculatorData) {
 
 	if strings.ToLower(confirmed) == "y" {
 		fmt.Println(" Введите название операции")
+
 		var nameOperation string
 		_, err := fmt.Scan(&nameOperation)
+
 		if err != nil {
 			fmt.Println(err)
 			return
