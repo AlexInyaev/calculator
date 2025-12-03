@@ -8,16 +8,25 @@ import (
 
 var mamoryOperations = make(map[string]*cli.CalculatorData, 10)
 
-func S100aveOptration(opiration *cli.CalculatorData) {
+func SaveOptration(opiration *cli.CalculatorData) {
 	fmt.Println("Сохранить операцию \"Yes/No\"Y/N")
 
 	confirmed := ""
-	fmt.Scan(&confirmed)
+	_, err := fmt.Scan(&confirmed)
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
 	if strings.ToLower(confirmed) == "y" {
 		fmt.Println(" Введите название операции")
 		var nameOperation string
-		fmt.Scan(&nameOperation)
+		_, err := fmt.Scan(&nameOperation)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
 		mamoryOperations[nameOperation] = opiration
 	}
 
