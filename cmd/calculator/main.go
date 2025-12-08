@@ -14,13 +14,30 @@ func main() {
 
 func flowOperations() {
 	CalcOne := cli.NewCalculatorData()
-	CalcOne.GetFirstNumber()
-	CalcOne.GetSecondNumber()
-	CalcOne.GetOperator()
-	err := CalcOne.DoOperation()
+	err := CalcOne.GetFirstNumber()
+	if err != nil {
+		fmt.Println("Ошибка:", err)
+		return
+	}
+
+	err = CalcOne.GetSecondNumber()
+	if err != nil {
+		fmt.Println("Ошибка:", err)
+		return
+	}
+
+	err = CalcOne.GetOperator()
+	if err != nil {
+		fmt.Println("Ошибка:", err)
+		return
+	}
+
+	err = CalcOne.DoOperation()
 	if err != nil {
 		fmt.Println(err)
+		return
 	}
+
 	CalcOne.PrintResult()
 	appMemory.SaveOptration(CalcOne)
 }

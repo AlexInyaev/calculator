@@ -22,48 +22,45 @@ func NewCalculatorData() *CalculatorData {
 	return cld
 }
 
-func (cl *CalculatorData) GetFirstNumber() {
+func (cl *CalculatorData) GetFirstNumber() error {
 	fmt.Println("Введите первое число")
 
 	str := ""
 
 	_, err := fmt.Scan(&str)
 	if err != nil {
-		fmt.Println(err)
-		return
+		return err
 	}
 
 	num, err := strconv.ParseFloat(str, 64)
 	if err != nil {
-		//fmt.Println("Ошибка:", err)
-		return
+		fmt.Println("Ошибка:", err)
+		return err
 	}
 	cl.Num1 = num
-
+	return nil
 }
 
-func (cl *CalculatorData) GetSecondNumber() {
+func (cl *CalculatorData) GetSecondNumber() error {
 	fmt.Println("Введите второе число")
 
 	str := ""
 
 	_, err := fmt.Scan(&str)
 	if err != nil {
-		fmt.Println(err)
-		return
+		return err
 	}
 
 	num, err := strconv.ParseFloat(str, 64)
 	if err != nil {
-		fmt.Println("Ошибка:", err)
-		return
+		return err
 	}
 
 	cl.Num2 = num
-
+	return nil
 }
 
-func (cl *CalculatorData) GetOperator() {
+func (cl *CalculatorData) GetOperator() error {
 	fmt.Println("Введите знак \"+,-,/,* \"  операции которую планируете  выполнить")
 
 	Operation := ""
@@ -71,10 +68,11 @@ func (cl *CalculatorData) GetOperator() {
 	_, err := fmt.Scan(&Operation)
 	if err != nil {
 		fmt.Println(err)
-		return
+		return err
 	}
 
 	cl.Operation = Operation
+	return nil
 }
 func (cl *CalculatorData) DoOperation() error {
 	switch cl.Operation {

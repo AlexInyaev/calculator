@@ -32,4 +32,8 @@ func SaveOptration(opiration *cli.CalculatorData) {
 		mamoryOperations[nameOperation] = opiration
 	}
 
+	for key, value := range mamoryOperations {
+		fmt.Printf("Название операции: %s, Операция: %.2f %s %.2f = %.2f \n", key, value.Num1, value.Operation, value.Num2, value.Result)
+	}
+
 }
